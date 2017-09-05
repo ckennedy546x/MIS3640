@@ -1,2 +1,5 @@
-print('hello, world')
-
+print(60*42+42)
+print(10/1.61)
+print(6.21/2562)
+print(.00242388*60)
+print(.1454327*60)
