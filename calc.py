@@ -11,3 +11,8 @@ print(2286/60)
 print('7:30:06AM')#Home arrival time
 print((89-82)/82*100)
 print('Percentage of grade increase is: %02.0d %%' % 8.5365)
+
+#Beginning of Exercise for Session 3
+import time
+date = time.time()
+print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(date)))
