@@ -16,3 +16,11 @@ print('Percentage of grade increase is: %02.0d %%' % 8.5365)
 import time
 date = time.time()
 print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(date)))
+
+import time
+print(time.time())
+current = time.time()
+second = current % 60
+minutes = (current//60) % 60
+hours = (current//60) // 60 % 24
+days = 
