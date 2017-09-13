@@ -23,4 +23,36 @@ current = time.time()
 second = current % 60
 minutes = (current//60) % 60
 hours = (current//60) // 60 % 24
-days = 
+
+#Class Session 4 Exercises
+
+def my_abs(x):
+    print(abs(x))
+
+my_abs(-400)
+
+def give_me_a_break():
+    str1 = 'break'
+    return str1
+    print('another break')
+
+print(give_me_a_break())
+
+def nop():
+    pass
+
+
+import math
+def move(x, y, step, angle):
+    nx = x + step * math.cos(angle)
+    ny = y - step * math.sin(angle)
+    return nx, ny
+x, y = move(100, 100, 60, math.pi / 6)
+print(x, y)
+#Exercise 1
+import math
+def quadratic(a, b, c, x):
+    y = ((a*x)**2)+(b*x)+c
+    return y
+ans = quadratic(2, 4, 8, 2/3)
+print(ans)
