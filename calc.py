@@ -56,3 +56,10 @@ def quadratic(a, b, c, x):
     return y
 ans = quadratic(2, 4, 8, 2/3)
 print(ans)
+
+import math
+def quadratic(a, b, c, x):
+    y = ((a*x)**2)+(b*x)+c
+    return y
+ans = quadratic(2, 4, 8, 9)
+print(ans)
