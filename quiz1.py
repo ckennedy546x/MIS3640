@@ -59,11 +59,11 @@ def leap_year(year):
 
     """
 
-    if year / 4 == int():
+    if year % 4 == 0:
         return True
-    elif year / 400 == int():
+    elif year % 400 == 0:
         return True
-    elif year / 100 == int():
+    elif year % 100 == 0:
         return False
     else:
         return False
@@ -105,8 +105,10 @@ Write a function with loops that computes The sum of all squares between
 
 """
 def sum_squares(n):
-    for i in range(101):
-        print(math.sqrt(n))
+    result = 0
+    for i in range(1, n+1):
+        result
+        print(math.s
 
 
     
@@ -120,7 +122,6 @@ def sum_squares(n):
 # following lines and run this file to test!
 
 
+print(sum_squares(1))
 
-# print(sum_squares(1))
-
-# print(sum_squares(100))
+print(sum_squares(100))
