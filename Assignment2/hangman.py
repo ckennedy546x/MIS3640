@@ -83,6 +83,23 @@ def getGuessedWord(secretWord, lettersGuessed):
     '''
     # FILL IN YOUR CODE HERE...
 
+    count = 0 #sets the counter to start from zero
+    underscore = ['_ '] * len(secretWord) #sets a variable that will create the same amount of underscores as the length of the secretWord 
+
+    for i, c in enumerate(secretWord): #the for loop uses enumerate which allows i to be the index and c to be the value
+        if c in lettersGuessed: #if the the value of the element (c) in lettersGuessed is the same as the value (c) in the element in secretWord, 1 will be added to the counter 
+            count += 1
+            underscore.insert(count-1,c) #then (c) will be inserted into the index that is one less than our current counter
+            underscore.pop(count) #this will remove the element in the list that is at the index that is equal to our current counter
+            if count == len(secretWord): #once our current counter is equal to the length of our secretWord we will return the list that we have created with letters and underscores. If it doesn't equal, then the next loop will be started
+                return ''.join(str(s) for s in underscore)
+        else: #if the the value of the element (c) in lettersGuessed is not the same as the value (c) in the element in secretWord, 1 will be added to the counter 
+            count += 1 
+            underscore.insert(count-1,'_') #then '_' will be inserted into the index that is one less than our current counter
+            underscore.pop(count) #this will remove the element in the list that is at the index that is equal to our current counter
+            if count == len(secretWord): #once our current counter is equal to the length of our secretWord we will return the list that we have created with letters and underscores. If it doesn't equal, then the next loop will be started
+                return ''.join(str(s) for s in underscore)
+
 
 # When you've completed your function getGuessedWord, uncomment these three lines
 # and run this file to test!
