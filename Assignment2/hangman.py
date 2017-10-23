@@ -84,7 +84,7 @@ def getGuessedWord(secretWord, lettersGuessed):
     # FILL IN YOUR CODE HERE...
 
     count = 0 #sets the counter to start from zero
-    underscore = ['_ '] * len(secretWord) #sets a variable that will create the same amount of underscores as the length of the secretWord 
+    underscore = ['_ '] * len(secretWord) #sets a variable that will create the same amount of underscores as the length of the secretWord. This will create a list of underscores with the amount of underscores equalling the length of the secretWord word
 
     for i, c in enumerate(secretWord): #the for loop uses enumerate which allows i to be the index and c to be the value
         if c in lettersGuessed: #if the the value of the element (c) in lettersGuessed is the same as the value (c) in the element in secretWord, 1 will be added to the counter 
@@ -162,11 +162,51 @@ def hangman(secretWord):
     '''
     # FILL IN YOUR CODE HERE...
 
+    intro = str(len(secretWord)) #Sets variable equal to length of secretWord
+    lettersGuessed = [] #creates a variable that is an empty list
+    guess = str #makes an inputted guess a string
+    mistakesMade = 8 #Sets the amount of allowed mistakes to 8.  After each wrong guess, 1 will be subtracted from this number.
+    wordGuessed = False #sets variable that is equal to false to start
+    
+    print('Welcome to the game, Hangman!') #prints phrase when game begins
+    print(('I am thinking of a word that is ') + intro + (' letters long.')) #prints phrase "I am thinking of a word that is (length of the secret word) letters long"
+    print(('------------')) #prints a line to seperate opening phrase
+
+    while mistakesMade > 0 and mistakesMade <= 8 and wordGuessed is False: #the while statement will continue to run if the amount of wrong guesses is higher than 0, less than or equal to 8, and if the word hasn't been fully guessed yet
+        if secretWord == getGuessedWord(secretWord, lettersGuessed): #if the secretWord word is equal to the word that was generated from the getGuessedWord funtion, then wordGuessed variable is changed to true now and the while statement is stopped and "Congratulations, you won" is printed
+            wordGuessed = True
+            break
+        print(('You have ') + str(mistakesMade) + (' guesses left.')) # if the full word hasn't been guessed, the game will tell you how many guesses you have left 
+        print(('Available letters: ') + getAvailableLetters(lettersGuessed))#the game will also tell you how many letters are left which will draw upon the getAvailableLetters function
+        guess = input(('Please guess a letter: ').lower())#the game will then ask you for another letter to be guessed and will convert it to lowercase
+        if guess in secretWord:#if the inputted guess is in fact in secretWord...
+            if guess in lettersGuessed: #AND if the letter has already been guessed, found from the created list, the game will tell you that you have already guessed letter and will tell you the current updated word at the current point
+                print(("Oops! You've already guessed that letter: ") + getGuessedWord(secretWord, lettersGuessed))
+                print('------------')
+            else: #AND if it hasn't been guessed the current state of your guessed word will add the letter to your GuessedWord and the lettersGuessed will take out the letter you just guessed
+                lettersGuessed.append(guess)
+                print(('Good guess: ') + getGuessedWord(secretWord, lettersGuessed))
+                print(('------------'))
+        else: #if the letter is not in SecretWord...
+            if guess in lettersGuessed:#AND your letter was already guessed, found from the created list, the game will tell you that you have already guessed letter and will tell you the current updated word at the current point
+                print(("Oops! You've already guessed that letter: ") + getGuessedWord(secretWord, lettersGuessed))
+                print('------------')
+            else:#AND if the letter hasn't been guessed yet your amount of tries left (mistakesMade) will decrease by 1 and the game will tell you that it is not in the secretWord and will remind you of your updated word from the getGuessedWord function
+                lettersGuessed.append(guess)
+                mistakesMade -= 1
+                print(('Oops! That letter is not in my word: ') + getGuessedWord(secretWord, lettersGuessed))
+                print('------------')
+
+    if wordGuessed == True: #If your word that you've created equals the secretWord word, the game will tell you that you won
+        return 'Congratulations, you won!'
+    elif mistakesMade == 0: #if you guess incorrectly 8 times before finding out the whole word, you lose and the game will tell you that you ran out of guesses and will then tell you what the secretWord was
+        print(('Sorry, you ran out of guesses. The word was ') + secretWord)
+
 
 # When you've completed your hangman function, uncomment these two lines
 # and run this file to test! (hint: you might want to pick your own
 # secretWord while you're testing)
 
-# secretWord = chooseWord(wordlist).lower()
-# hangman(secretWord)
+secretWord = chooseWord(wordlist).lower() #this will randomly choose a word from the word.txt file and make sure it is lowercase
+print(hangman(secretWord)) #Once this function is called upon it will run the hangman function and begin the game using the secretWord as the argument or word to be guessed
 
