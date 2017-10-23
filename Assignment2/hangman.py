@@ -123,6 +123,18 @@ def getAvailableLetters(lettersGuessed):
 
     # FILL IN YOUR CODE HERE...
 
+    alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'] #creates a variable that is a list containing every letter in the alphabet
+    alphabet2 = alphabet[:] #creates a variable that is a copy of alphabet
+
+    def removeDupsBetter(L1, L2): #Creates a function within the getAvailableLetters with arguments of L1 and L2 which will be will be equated to our lettersGuessed and our copied alphabet list
+        L1Start = L1[:] #creates a variable which creates a copy of L1
+        for m in L1: #starts a for loop that will run through each element within the L1 list which will be set as lettersGuessed
+            if m in L1Start: #if the element in the specific loop is in the copy of L1 (L1Start)
+                L2.remove(m) #then the element or letter will be removed from L2, which will later be set as the copied alphabet list 
+        return ''.join(str(m) for m in L2) #after the loop is completed, the updated list (L2) will be returned 
+
+    return removeDupsBetter(lettersGuessed, alphabet2) #Once the getAvailableLetters function is run, this will run the function within it (removeDupsBetter).  It sets L1 as lettersGuesses and L2 as the alphabet2 (the copied alphabet list)
+
 
 # When you've completed your function getAvailableLetters, uncomment these two lines
 # and run this file to test!
