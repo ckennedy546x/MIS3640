@@ -1,0 +1,25 @@
+Class Order:     (The class, very abstract)
+
+Atrributes: (Structure of the attributes)
+ProductName
+Quantity
+Date
+
+Methods:  (Behavior of the attributes)
+
+
+
+Class Object:      (The object)
+
+Attributes:
+ProductName = water bottle
+Quantity = 10
+Date = 10/12
+
+Mehtods: 
+
+print(isinstance(ProductName, Order))
+It will return True
+
+"The object is an instance of the class" 
+
