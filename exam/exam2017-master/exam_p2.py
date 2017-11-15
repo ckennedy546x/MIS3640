@@ -152,7 +152,7 @@ class PlainText(Text):
 
         Returns: self.move
         '''
-        return self.shift
+        return self.move
 
 
     ### YOU NEED TO MODIFY THIS METHOD ###
