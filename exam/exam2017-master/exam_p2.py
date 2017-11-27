@@ -31,7 +31,7 @@ def get_joke_string():
     """
     Returns: an article in encrypted text.
     """
-    f = open("C:\\joke.txt", "r", encoding = 'utf-8') #can't read the apostrophe without this
+    f = open("joke.txt", "r", encoding = 'utf-8') #can't read the apostrophe without this
     joke = str(f.read())
     f.close()
     return joke
@@ -251,7 +251,7 @@ def decrypt_joke():
 ### DO NOT MODIFY THIS FUNCTION ###
 def main():
     # Example test case (PlainText)
-    plaintext = PlainText('hello', 2)
+    plaintext = PlainText('hello world', 2)
     print('Expected Output: jgnnq')
     print('Actual Output:', plaintext.get_encrypted_text())
 
@@ -261,6 +261,8 @@ def main():
     print('Actual Output:', ciphertext.decrypt_text())
 
     print(decrypt_joke())
+
+    # print(get_joke_string())
 
 if __name__ == '__main__':
     main()
