@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 app.config['DEBUG'] = True
 
+app.secret_key = "Some secret string here"
 
 @app.route('/')
 def index():
